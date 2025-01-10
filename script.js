@@ -42,11 +42,52 @@ function getComputerChoice() {
 }
 
 function getHumanChoice() {
-    let choice = prompt("Rock, Paper, Scissors \n Choose: ", " ");
+    let choice = prompt("Rock, Paper, Scissors \n Choose: ");
+    if (choice === null) {
+        throw new Error("Game Cancelled!");
+    }
     choice = choice.toLowerCase();
     console.log("You chose " + choice);
     return choice;
 }
 
-getHumanChoice();
-getComputerChoice();
+let userScore = 0;
+let computerScore = 0;
+
+function playRound(user, computer) {
+    let result;
+    if (user === null){
+        return result = console.log("Game Cancelled!");
+    }
+
+    if (user === "rock" && computer === "rock") {
+        return result = "Draw!";
+    } else if (user === "rock" && computer === "paper") {
+        computerScore++;
+        return result = "You lose! Paper beats Rock!";
+    } else if (user === "rock" && computer === "scissors") {
+        userScore++;
+        return result = "You win! Rock beats Scissors!";
+    } else if (user === "paper" && computer === "rock") {
+        userScore++;
+        return result = "You win! Paper beats Rock!";
+    } else if (user === "paper" && computer === "paper") {
+        return result = "Draw!";
+    } else if (user === "paper" && computer === "scissors") {
+        computerScore++;
+        return result = "You lose! Scissors beats Paper!";
+    } else if (user === "scissors" && computer === "rock") {
+        computerScore++;
+        return result = "You lose! Rock beats Scissors!";
+    } else if (user === "scissors" && computer === "paper") {
+        userScore++;
+        return result = "You win! Scissors beats Paper!";
+    } else if (user === "scissors" && computer === "scissors") {
+        return result = "Draw!";
+    } else {
+        return result = "Invalid Choice! Please make sure that there's no spaces before and after your choice.";
+    }
+
+}
+console.log(playRound(getHumanChoice(), getComputerChoice()));
+console.log("User = " + userScore + "\nComputer = " + computerScore);
