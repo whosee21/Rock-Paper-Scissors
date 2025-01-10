@@ -26,9 +26,6 @@ function getHumanChoice() {
 
 function playRound(user, computer) {
     let result;
-    if (user === null){
-        return result = console.log("Game Cancelled!");
-    }
 
     if (user === "rock" && computer === "rock") {
         return console.log("Draw!");
