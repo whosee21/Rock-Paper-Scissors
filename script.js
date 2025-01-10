@@ -1,5 +1,3 @@
- console.log("Hello World");
-
 // Pseudocode
 
 //  create a function for computer choice
@@ -25,3 +23,30 @@
 
 // make the game to have 5 rounds and declare the winner in the end 
 //  can use for loop or while loop
+
+
+console.log("Let's play Rock, Paper, and Scissors!");
+
+function getComputerChoice() {
+    let choice = Math.floor(Math.random() * 9) + 1;
+    if (choice >= 1 && choice <= 3) {
+        choice = "Rock";
+    } else if (choice >= 4 && choice <= 6) {
+        choice = "Paper";
+    } else {
+        choice = "Scissors";
+    }
+    choice = choice.toLowerCase();
+    console.log("Computer chose " + choice);
+    return choice;
+}
+
+function getHumanChoice() {
+    let choice = prompt("Rock, Paper, Scissors \n Choose: ", " ");
+    choice = choice.toLowerCase();
+    console.log("You chose " + choice);
+    return choice;
+}
+
+getHumanChoice();
+getComputerChoice();
