@@ -51,9 +51,6 @@ function getHumanChoice() {
     return choice;
 }
 
-let userScore = 0;
-let computerScore = 0;
-
 function playRound(user, computer) {
     let result;
     if (user === null){
@@ -61,33 +58,57 @@ function playRound(user, computer) {
     }
 
     if (user === "rock" && computer === "rock") {
-        return result = "Draw!";
+        return console.log("Draw!");
     } else if (user === "rock" && computer === "paper") {
-        computerScore++;
-        return result = "You lose! Paper beats Rock!";
+        console.log("You lose! Paper beats Rock!");
+        return result = 0;
     } else if (user === "rock" && computer === "scissors") {
-        userScore++;
-        return result = "You win! Rock beats Scissors!";
+        console.log("You win! Rock beats Scissors!");
+        return result = 1;
     } else if (user === "paper" && computer === "rock") {
-        userScore++;
-        return result = "You win! Paper beats Rock!";
+        console.log("You win! Paper beats Rock!");
+        return result = 1;
     } else if (user === "paper" && computer === "paper") {
-        return result = "Draw!";
+        return console.log("Draw!");
     } else if (user === "paper" && computer === "scissors") {
-        computerScore++;
-        return result = "You lose! Scissors beats Paper!";
+        console.log("You lose! Scissors beats Paper!");
+        return result = 0;
     } else if (user === "scissors" && computer === "rock") {
-        computerScore++;
-        return result = "You lose! Rock beats Scissors!";
+        console.log("You lose! Rock beats Scissors!");
+        return result = 0;
     } else if (user === "scissors" && computer === "paper") {
-        userScore++;
-        return result = "You win! Scissors beats Paper!";
+        console.log("You win! Scissors beats Paper!");
+        return result = 1;
     } else if (user === "scissors" && computer === "scissors") {
-        return result = "Draw!";
+        return console.log("Draw!");
     } else {
         return result = "Invalid Choice! Please make sure that there's no spaces before and after your choice.";
     }
-
 }
-console.log(playRound(getHumanChoice(), getComputerChoice()));
-console.log("User = " + userScore + "\nComputer = " + computerScore);
+
+function playGame() {
+    let userScore = 0;
+    let computerScore = 0;
+
+    for (let i = 1; i <=5; i++) {
+        let result = playRound(getHumanChoice(), getComputerChoice());
+        if (result === 1) {
+            userScore++;
+        } else if (result === 0){
+            computerScore++;
+        }
+        console.log("User = " + userScore + "\nComputer = " + computerScore);
+    }
+
+    if (userScore > computerScore) {
+        console.log("Congratulations! You win!");
+    } else if (userScore < computerScore) {
+        console.log("You lose! Better luck next time!");
+    } else {
+        console.log("It's a tie!");
+    }
+
+    console.log("Game Over!");
+}
+
+playGame();
