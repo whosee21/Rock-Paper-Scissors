@@ -9,6 +9,7 @@ function getComputerChoice() {
     } else {
         choice = "Scissors";
     }
+    
     choice = choice.toLowerCase();
     console.log("Computer chose " + choice);
     return choice;
@@ -56,29 +57,52 @@ function playRound(user, computer) {
     }
 }
 
-function playGame() {
-    let userScore = 0;
-    let computerScore = 0;
+const rock = document.createElement("button");
+const paper = document.createElement("button");
+const scissors = document.createElement("button");
 
-    for (let i = 1; i <=5; i++) {
-        let result = playRound(getHumanChoice(), getComputerChoice());
-        if (result === 1) {
-            userScore++;
-        } else if (result === 0){
-            computerScore++;
-        }
-        console.log("User = " + userScore + "\nComputer = " + computerScore);
-    }
+const body = document.body;
+body.appendChild(rock);
+rock.textContent = "Rock";
+body.appendChild(paper);
+paper.textContent = "Paper";
+body.appendChild(scissors);
+scissors.textContent = "Scissors";
 
-    if (userScore > computerScore) {
-        console.log("Congratulations! You win!");
-    } else if (userScore < computerScore) {
-        console.log("You lose! Better luck next time!");
-    } else {
-        console.log("It's a tie!");
-    }
+const btn = document.querySelectorAll("button");
+btn.forEach((button) => {
+    button.addEventListener('click', () => {
+        let result = playRound(button.textContent.toLowerCase(), getComputerChoice());
+        
+    });
+});
 
-    console.log("Game Over!");
-}
 
-playGame();
+
+
+// function playGame() {
+//     let userScore = 0;
+//     let computerScore = 0;
+
+//     for (let i = 1; i <=5; i++) {
+//         let result = playRound(getHumanChoice(), getComputerChoice());
+//         if (result === 1) {
+//             userScore++;
+//         } else if (result === 0){
+//             computerScore++;
+//         }
+//         console.log("User = " + userScore + "\nComputer = " + computerScore);
+//     }
+
+//     if (userScore > computerScore) {
+//         console.log("Congratulations! You win!");
+//     } else if (userScore < computerScore) {
+//         console.log("You lose! Better luck next time!");
+//     } else {
+//         console.log("It's a tie!");
+//     }
+
+//     console.log("Game Over!");
+// }
+
+// playGame();
